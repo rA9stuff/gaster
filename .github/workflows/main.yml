@@ -1,0 +1,32 @@
+name: Build gaster libs
+
+on:
+  push:
+      branches: [ main ]
+  pull_request:
+      branches: [ main ]
+
+jobs:
+
+  build-iphoneos:
+    runs-on: macos-12
+    steps:
+    - name: envdetails
+      run: ls && echo && pwd
+    - uses: actions/checkout@v2
+    - name: build
+      run: make ios
+    - name: create static libs
+      run: chmod +x create_libs && ./create_libs
+    - name: upload gaster
+      id: upload_gaster
+      uses: actions/upload-artifact@v2
+      with:
+        name: "gaster.a"
+        path: ${{ github.workspace }}/gaster.a
+    - name: upload lzfse
+      id: upload_lzfse
+      uses: actions/upload-artifact@v2
+      with:
+        name: "lzfse.a"
+        path: ${{ github.workspace }}/lzfse.a
