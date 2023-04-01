@@ -1623,7 +1623,7 @@ gaster_reset(usb_handle_t *handle) {
 }
 
 int
-main(int argc, char **argv) {
+run_gaster(int argc, char **argv) {
 	char *env_usb_timeout = getenv("USB_TIMEOUT"), *env_usb_abort_timeout_min = getenv("USB_ABORT_TIMEOUT_MIN");
 	int ret = EXIT_FAILURE;
 	usb_handle_t handle;
