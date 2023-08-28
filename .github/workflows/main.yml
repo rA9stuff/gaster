@@ -1,4 +1,4 @@
-name: Build gaster libs
+name: Build gaster static libs
 
 on:
   push:
